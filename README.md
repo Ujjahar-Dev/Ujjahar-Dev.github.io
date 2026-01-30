@@ -45,7 +45,7 @@
 ### 📞 Connect with the Architect
 <p align="center">
 <a href="https://instagram.com/trademaster_india_141787"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
-<a href="https://ujjahar-dev.github.io/"><img src="https://img.shields.io/badge/Website-00FFCC?style=for-the-badge&logo=google-chrome&logoColor=black" target="_blank"></a>
+<a href="https://Ujjahar-Dev.github.io/"><img src="https://img.shields.io/badge/Website-00FFCC?style=for-the-badge&logo=google-chrome&logoColor=black" target="_blank"></a>
 </p>
 
 <p align="center">
