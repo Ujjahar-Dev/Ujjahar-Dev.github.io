@@ -4,27 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="v769BE5saw-2a9gLXzq8b_kDua8B6WM7zAHG_F9Vmtk" />
-    <title>Ujjahar | Trading Terminal</title>
+    <title>Ujjahar | The Architect Terminal</title>
     <style>
-        :root { --neon: #00ffcc; --gold: #ffbf00; --bg: #050505; --card-bg: rgba(20, 20, 20, 0.8); }
-        body { background: var(--bg); color: #fff; font-family: 'Courier New', monospace; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        :root { --neon: #00ffcc; --gold: #ffbf00; --bg: #050505; --dark-gray: #1a1a1a; }
+        body { background: var(--bg); color: #fff; font-family: 'Courier New', monospace; margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center; }
         
-        .terminal { border: 2px solid var(--neon); padding: 30px; box-shadow: 0 0 20px rgba(0, 255, 204, 0.2); background: rgba(0,0,0,0.9); width: 90%; max-width: 800px; border-radius: 10px; margin-bottom: 20px; }
+        /* Terminal Window Effect */
+        .window { border: 2px solid var(--neon); padding: 20px; box-shadow: 0 0 25px rgba(0, 255, 204, 0.2); background: rgba(0,0,0,0.95); width: 95%; max-width: 900px; border-radius: 8px; margin-top: 20px; }
         
-        h1 { color: var(--gold); letter-spacing: 8px; text-shadow: 0 0 10px var(--gold); margin: 10px 0; text-align: center; }
-        .status { font-size: 0.7rem; color: #39ff14; margin-bottom: 10px; }
+        .header { text-align: center; border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px; }
+        h1 { color: var(--gold); letter-spacing: 10px; text-shadow: 0 0 10px var(--gold); margin: 5px 0; font-size: 2.5rem; }
+        .glitch { animation: blink 1.5s infinite; color: #39ff14; font-size: 0.8rem; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
-        /* Journal Section */
-        .journal-section { width: 90%; max-width: 800px; margin-top: 20px; }
-        .journal-header { color: var(--neon); border-bottom: 1px solid var(--neon); padding-bottom: 10px; margin-bottom: 20px; font-weight: bold; }
-        
-        .log-card { background: var(--card-bg); border-left: 4px solid var(--gold); padding: 15px; margin-bottom: 15px; border-radius: 5px; transition: 0.3s; }
-        .log-card:hover { transform: scale(1.02); background: rgba(30, 30, 30, 0.9); }
-        .log-date { font-size: 0.8rem; color: #888; }
-        .log-title { color: var(--neon); font-size: 1.1rem; margin: 5px 0; }
-        .log-desc { font-size: 0.9rem; line-height: 1.4; color: #ccc; }
+        /* Grid for Skills & Stats */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; width: 100%; }
+        .section-box { background: var(--dark-gray); border: 1px solid #444; padding: 15px; border-radius: 5px; border-left: 3px solid var(--neon); }
+        .section-title { color: var(--neon); font-size: 1rem; margin-bottom: 10px; text-transform: uppercase; font-weight: bold; }
 
-        /* TradingView Widget */
-        #ticker { margin: 20px 0; border: 1px solid #333; border-radius: 5px; overflow: hidden; }
+        /* Trading Journal Styling */
+        .log-entry { font-size: 0.85rem; border-bottom: 1px dashed #444; padding: 10px 0; }
+        .log-date { color: #888; font-size: 0.75rem; }
+        .log-tag { color: var(--gold); font-weight: bold; }
+
+        /* TradingView Widget Container */
+        .ticker-wrap { margin: 20px 0; background: #000; border-radius: 5px; border: 1px solid #333; overflow: hidden; }
+
+        .footer { margin-top: 40px; font-size: 0.7rem; color: #444; text-align: center; border-top: 1px solid #222; width: 100%; padding-top: 20px; }
         
-        .footer { font-size: 0.7rem; color: #
+        /* Skills Tags */
+        .tag { background: #333; padding: 3px 8px; border-radius: 3px; font-size: 0.75rem; margin-right: 5px; border: 1px solid var(--neon); color: var(--neon); }
+    </style>
+</head>
+<body>
+
+    <div class="window">
+        <div class="header">
+            <div class="glitch">[ACCESS_GRANTED: UJJAHAR_V3.5_STABLE]</div>
+            <h1>UJJAHAR</h1>
+            <p style="color: #aaa;">Logic for the Market • Security for the Data</p>
+        </div>
+
+        <div class="section-title">📊 LIVE_MARKET_FEED ($XAUUSD$)</div>
+        <div class="ticker-wrap">
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                {"symbol": "TVC:GOLD","width": "100%","colorTheme": "dark","isTransparent": true,"locale": "en"}
+                </script>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="section-box">
+                <div class="section-title">🛡️ TECHNICAL_ARSENAL</div>
+                <div style="margin-top: 10px;">
+                    <span class="tag">KALI LINUX</span> <span class="tag">PYTHON</span><br><br>
+                    <span class="tag">CYBER SECURITY</span> <span class="tag">METASPLOIT</span><br><br>
+                    <span class="tag">PRICE ACTION</span> <span class="tag">HTML/CSS</span>
+                </div>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 15px;">Focus: Automating Trading Logic & Offensive Security.</p>
+            </div>
+
+            <div class="section-box" style="border-left-color: var(--gold);">
+                <div class="section-title">📂 ANALYSIS_LOGS</div>
+                <div class="log-entry">
+                    <span class="log-date">30 JAN 2026</span><br>
+                    <span class="log-tag">GOLD:</span> Resistance at 2xxx. Fibonacci 0.618 support active.
+                </div>
+                <div class="log-entry">
+                    <span class="log-date">29 JAN 2026</span><br>
+                    <span class="log-tag">PYTHON:</span> Developed a script to alert Gold breakouts.
+                </div>
+                <a href="#" style="color: var(--gold); font-size: 0.75rem; text-decoration: none;">+ View Full Journal</a>
+            </div>
+        </div>
+
+        <div class="section-box" style="margin-top: 20px; border-left-color: #ff4d4d;">
+            <div class="section-title">✍️ UJJAHAR_POETRY</div>
+            <p style="font-style: italic; color: #ccc;">"Market ki volatility ho ya dil ka shor,<br>Har cheez ka logic milta hai, agar ho thoda gaur."</p>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 UJJAHAR BRAND • BUILDING THE FUTURE OF COMMERCE & CODE<br>
+        <span style="color: var(--neon);">SYSTEM_STATUS: SECURE_AND_LIVE</span>
+    </div>
+
+</body>
+</html>
