@@ -1,4 +1,4 @@
-# <p align="center"> 🛡️ ACCESS_AUTHORIZED: UJJAHAR_V10.0 </p>
+# <p align="center"> 🛡️ ACCESS_AUTHORIZED: Ujjwal yadav(ujjahar)_ </p>
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=30&pause=1000&color=FFCC00&center=true&vCenter=true&width=600&lines=Harsh+Yadav+Ujjahar;Stock+Market+Analyst;Python+Developer;Kali+Linux+Enthusiast;Ujjwal+Yadav" />
