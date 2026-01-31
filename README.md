@@ -1,4 +1,4 @@
-# <p align="center"> <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=35&pause=1000&color=00FFCC&center=true&vCenter=true&width=600&lines=I+am+Ujjwal+Yadav;Founder+of+UJJAHAR;Python+Developer; StockMarketwithTrader📊;Cyber+Security+Analyst" alt="Typing SVG" /> </p>
+# <p align="center"> <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=35&pause=1000&color=00FFCC&center=true&vCenter=true&width=600&lines=I+am+Ujjwal+Yadav;Founder+of+UJJAHAR;Python+Developer; StockMarketwithTrader;Cyber+Security+Analyst" alt="Typing SVG" /> </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Kali_Linux-2026-blueviolet?style=for-the-badge&logo=kali-linux&logoColor=white" />
