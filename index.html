@@ -15,13 +15,17 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        /* Entrance / Header */
+        /* Header Update */
         header { text-align: center; padding: 60px 0; border-bottom: 2px solid #111; margin-bottom: 40px; position: relative; }
-        .glitch-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 8vw, 5rem); letter-spacing: 20px; color: var(--gold); text-shadow: 0 0 20px var(--gold); animation: glitch 2.5s infinite; }
+        .sec-status { font-size: 0.8rem; color: var(--green); letter-spacing: 5px; margin-bottom: 10px; font-weight: bold; }
+        .glitch-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(2.5rem, 8vw, 5.5rem); letter-spacing: 20px; color: var(--gold); text-shadow: 0 0 20px var(--gold); animation: glitch 2.5s infinite; }
         @keyframes glitch { 0% { opacity: 1; } 5% { transform: skew(5deg); opacity: 0.8; } 10% { transform: skew(-5deg); opacity: 1; } 100% { transform: none; } }
-        .sec-status { font-size: 0.7rem; color: var(--green); letter-spacing: 5px; margin-top: 15px; }
+        .sub-name { color: #888; margin-top: 10px; font-size: 1.2rem; letter-spacing: 3px; }
 
-        /* Photo Gallery - New Filenames Integrated */
+        /* Visitor Counter Badge */
+        .visitor-counter { background: #111; border: 1px solid var(--green); color: var(--green); padding: 5px 15px; border-radius: 20px; font-size: 0.7rem; display: inline-block; margin-top: 20px; box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); }
+
+        /* Photo Gallery */
         .avatar-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 60px; }
         .avatar-card { background: rgba(10, 10, 10, 0.95); border: 2px solid var(--cyan); padding: 15px; border-radius: 12px; text-align: center; position: relative; transition: 0.5s; overflow: hidden; }
         .avatar-card:hover { transform: scale(1.05); box-shadow: 0 0 40px var(--cyan); }
@@ -30,21 +34,21 @@
         @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
         .name-tag { color: var(--gold); margin-top: 15px; font-weight: bold; letter-spacing: 3px; font-size: 1.1rem; }
 
-        /* Ultimate Market Dashboard */
-        .market-center { background: rgba(10, 10, 10, 0.98); border: 1px solid #333; border-top: 4px solid var(--cyan); padding: 20px; margin-bottom: 40px; border-radius: 5px; height: 700px; }
-        .market-center h2 { font-size: 0.9rem; color: var(--gold); margin-bottom: 20px; text-transform: uppercase; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        /* Dashboard & Info Panels */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .panel { background: rgba(10, 10, 10, 0.98); border: 1px solid #333; border-top: 4px solid var(--cyan); padding: 25px; border-radius: 5px; }
+        .panel h2 { font-size: 0.9rem; color: var(--gold); margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        .full-panel { grid-column: 1 / -1; height: 600px; }
 
-        /* Identity Console Box (The "Harsh Yadav" Profile) */
-        .console-box { background: #000; border: 2px solid var(--cyan); padding: 40px; margin-top: 80px; position: relative; box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.1); }
-        .console-box::before { content: "DATA_EXTRACTION_COMPLETE"; position: absolute; top: -12px; left: 30px; background: var(--bg); padding: 0 15px; color: var(--green); font-size: 0.75rem; border: 1px solid var(--green); }
-        .info-row { display: flex; margin-bottom: 15px; border-bottom: 1px solid #111; padding-bottom: 8px; font-size: 1rem; }
-        .label { color: var(--gold); width: 250px; font-weight: bold; }
-        .value { color: #fff; }
+        /* Technical Intel Box (Python & Kali) */
+        .tech-intel { background: #0a0a0a; border-left: 4px solid var(--green); padding: 20px; font-size: 0.85rem; line-height: 1.6; color: #ccc; }
+        .tech-intel b { color: var(--green); }
 
-        /* Links Hub */
-        .link-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 50px 0; }
-        .btn { padding: 15px 35px; border: 1px solid var(--cyan); color: var(--cyan); text-decoration: none; font-size: 0.85rem; transition: 0.4s; text-transform: uppercase; letter-spacing: 2px; }
-        .btn:hover { background: var(--cyan); color: #000; box-shadow: 0 0 30px var(--cyan); font-weight: bold; }
+        /* Identity Console Box */
+        .console-box { background: #000; border: 2px solid var(--cyan); padding: 40px; margin-top: 50px; position: relative; box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.1); }
+        .info-row { display: flex; margin-bottom: 12px; border-bottom: 1px solid #111; padding-bottom: 8px; }
+        .label { color: var(--gold); width: 220px; font-weight: bold; font-size: 0.9rem; }
+        .value { color: #fff; font-size: 0.9rem; }
 
         footer { text-align: center; padding: 60px; color: #444; font-size: 0.7rem; letter-spacing: 4px; border-top: 1px solid #111; }
     </style>
@@ -55,9 +59,10 @@
 
     <div class="container">
         <header>
-            <div class="sec-status">[ SECURITY_LEVEL: ALPHA-6 | SYSTEM: OPTIMIZED ]</div>
+            <div class="sec-status">Harsh Yadav Ujjahar</div>
             <h1 class="glitch-brand">UJJAHAR</h1>
-            <p style="color: #666; margin-top: 10px; font-size: 0.8rem;">The Confluence of Global Markets & Offensive Security</p>
+            <p class="sub-name">Ujjwal Yadav</p>
+            <div class="visitor-counter">📡 ACCESS_LOGS: <span id="count">14,178</span> SESSIONS</div>
         </header>
 
         <div class="avatar-section">
@@ -78,9 +83,27 @@
             </div>
         </div>
 
-        <div class="market-center">
-            <h2>💹 GLOBAL_MARKET_DASHBOARD (STOCKS • METALS • CRYPTO)</h2>
-            <div id="tv_dashboard" style="height: 94%; width: 100%;"></div>
+        <div class="grid">
+            <div class="panel full-panel">
+                <h2>💹 GLOBAL_MARKET_TERMINAL (STOCKS • METALS • CRYPTO)</h2>
+                <div id="tv_dashboard" style="height: 94%; width: 100%;"></div>
+            </div>
+
+            <div class="panel">
+                <h2>🛡️ TECHNICAL_INTEL_BASE</h2>
+                <div class="tech-intel">
+                    <b>● KALI LINUX:</b> Ye ek Debian-based distribution hai jo penetration testing aur security auditing ke liye bani hai. Isme Metasploit, Nmap aur Wireshark jaise pre-installed hacking tools hote hain jo digital logic aur network architecture ko samajhne mein help karte hain. <br><br>
+                    <b>● PYTHON:</b> Programming ki duniya ki sabse versatile language. Ise VS Code mein develop karke hum market automation bots, scrapers, aur security tools bana sakte hain. Ye data analysis ke liye duniya ki number 1 pasand hai.
+                </div>
+            </div>
+
+            <div class="panel" style="border-top-color: var(--gold);">
+                <h2>📖 UJJAHAR_CORE_MEANING</h2>
+                <p style="font-size: 0.9rem; color: #ccc; font-style: italic; line-height: 1.8;">
+                    "Ujjahar" ka matlab hai **'Prakash'** ya **'Ujala'**. <br>
+                    Ye brand represent karta hai market logic ki us roshni ko jo digital darkness aur trading ki complexity ko khatam karke ek saaf rasta (Clear Vision) dikhati hai. 
+                </p>
+            </div>
         </div>
 
         <div class="console-box">
@@ -92,21 +115,14 @@
             <div class="info-row"><span class="label">SECURE_COMMS:</span><span class="value">hy1417078@Gmail.com</span></div>
         </div>
 
-        <div class="link-buttons">
-            <a href="https://instagram.com/trademaster_india_141787" class="btn">Instagram Terminal</a>
-            <a href="https://github.com/Ujjahar-Dev" class="btn">GitHub Global</a>
-            <a href="https://github.com/Ujjahar-Dev/Ujjahar-Dev.github.io" class="btn">Source Code Repo</a>
-        </div>
-
         <footer>
             DESIGNED & ENCRYPTED BY UJJAHAR_CORP © 2026<br>
-            STAY LOGICAL. STAY SECURE.
+            [ STATUS: ACTIVE | LOCATION: ENCRYPTED ]
         </footer>
     </div>
 
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <script>
-        // Elite Dashboard Logic (Full Stock Market Analysis)
         new TradingView.widget({
             "autosize": true, "symbol": "NASDAQ:AAPL", "interval": "D", "timezone": "Etc/UTC",
             "theme": "dark", "style": "1", "locale": "en", "container_id": "tv_dashboard",
@@ -114,7 +130,6 @@
             "watchlist": ["TVC:GOLD", "TVC:SILVER", "BINANCE:BTCUSDT", "NASDAQ:TSLA", "NSE:NIFTY"]
         });
 
-        // Matrix Background Script
         const c = document.getElementById("matrix"); const ctx = c.getContext("2d");
         c.height = window.innerHeight; c.width = window.innerWidth;
         const alphabet = "UJJAHAR01STOCKSXAUUSDSECURITYKALI";
@@ -130,6 +145,13 @@
             });
         }
         setInterval(drawMatrix, 35);
+
+        // Simple Visitor Counter Animation
+        let count = 14178;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 2);
+            document.getElementById('count').innerText = count.toLocaleString();
+        }, 3000);
     </script>
 </body>
 </html>
