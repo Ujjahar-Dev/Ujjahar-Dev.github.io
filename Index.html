@@ -179,20 +179,47 @@
         </section>
 
         <section id="feedback">
-            <h2 class="section-header">05. VISITOR INSIGHTS</h2>
-            <div class="feedback-box">
-                <h3>Rate the Terminal Experience</h3>
-                <div class="stars" id="star-rating">
-                    <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
-                </div>
-                <textarea id="comment-input" placeholder="Enter your feedback or review..."></textarea>
-                <button onclick="alert('Insight Recorded. Logic Updated.')" style="margin-top: 20px; background: var(--accent); border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: 700;">Submit Feedback</button>
+    <h2 class="section-header">05. VISITOR INSIGHTS</h2>
+    <div class="feedback-box">
+        <h3>Rate the Terminal Experience</h3>
+        
+        <form action="https://formspree.io/f/https://formspree.io/f/mrelendz" method="POST" id="feedback-form">
+            
+            <input type="hidden" name="rating" id="rating-value" value="0">
+            
+            <div class="stars" id="star-rating">
+                <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
             </div>
-        </section>
+            
+            <textarea name="message" id="comment-input" placeholder="Enter your feedback or review..." required></textarea>
+            
+            <input type="email" name="_87" placeholder="Your Email (Optional)" 
+                   style="width: 100%; background: #111; border: 1px solid #333; padding: 15px; color: white; border-radius: 8px; margin-top: 10px;">
 
-        <footer>
-            © 2026 Harsh Yadav (Ujjwal). Built for Logic & Performance.<br>
-            <div class="gemini-badge">Co-Engineered by Gemini AI</div>
+            <button type="submit" style="margin-top: 20px; background: var(--accent); border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: 700; width: 100%;">
+                Submit Real Insight
+            </button>
+        </form>
+    </div>
+</section>
+
+<script>
+    // Star Rating Logic Update (Value Capture)
+    const stars = document.querySelectorAll('#star-rating span');
+    const ratingInput = document.getElementById('rating-value');
+
+    stars.forEach(star => {
+        star.onclick = () => {
+            let val = star.getAttribute('data-v');
+            ratingInput.value = val; // Set the value for form submission
+            
+            stars.forEach(s => s.classList.remove('active'));
+            for(let j=0; j<val; j++) stars[j].classList.add('active');
+        }
+    });
+</script>
+            © 2026 Harsh Yadav (Ujjwal). Ujjwal yadav.<br>
+            <div class="Harsh Yadav ">Co-Engineered by 87</div>
         </footer>
     </div>
 
