@@ -1,157 +1,164 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UJJAHAR | Professional Command Center</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <title>Harsh Yadav | Digital Architect & Market Analyst</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --cyan: #00f2ff; --gold: #ffcc00; --bg: #050505; --red: #ff3131; --green: #39ff14; }
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
-        body { background: var(--bg); color: #fff; font-family: 'JetBrains Mono', monospace; overflow-x: hidden; }
+        :root {
+            --bg-color: #0a0b10;
+            --accent-color: #007aff; /* Professional Blue */
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
+            --card-bg: #161b22;
+        }
 
-        /* Matrix Background */
-        #matrix { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 5%;
+            background: rgba(10, 11, 16, 0.8); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+        nav .logo { font-weight: 800; letter-spacing: 2px; color: var(--accent-color); font-size: 1.2rem; }
+        nav .nav-links { display: flex; gap: 30px; list-style: none; }
+        nav .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; transition: 0.3s; }
+        nav .nav-links a:hover { color: var(--accent-color); }
 
-        /* Header Update */
-        header { text-align: center; padding: 60px 0; border-bottom: 2px solid #111; margin-bottom: 40px; position: relative; }
-        .sec-status { font-size: 0.8rem; color: var(--green); letter-spacing: 5px; margin-bottom: 10px; font-weight: bold; }
-        .glitch-brand { font-family: 'Orbitron', sans-serif; font-size: clamp(2.5rem, 8vw, 5.5rem); letter-spacing: 20px; color: var(--gold); text-shadow: 0 0 20px var(--gold); animation: glitch 2.5s infinite; }
-        @keyframes glitch { 0% { opacity: 1; } 5% { transform: skew(5deg); opacity: 0.8; } 10% { transform: skew(-5deg); opacity: 1; } 100% { transform: none; } }
-        .sub-name { color: #888; margin-top: 10px; font-size: 1.2rem; letter-spacing: 3px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        /* Visitor Counter Badge */
-        .visitor-counter { background: #111; border: 1px solid var(--green); color: var(--green); padding: 5px 15px; border-radius: 20px; font-size: 0.7rem; display: inline-block; margin-top: 20px; box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); }
+        /* Hero Section */
+        section { padding: 100px 0; }
+        #home { 
+            height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
+            background: radial-gradient(circle at center, #112240 0%, #0a0b10 100%);
+        }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 10px; font-weight: 800; }
+        .hero-content p { color: var(--accent-color); font-size: 1.2rem; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; }
+        .hero-avatar { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--accent-color); margin-bottom: 30px; object-fit: cover; }
 
-        /* Photo Gallery */
-        .avatar-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .avatar-card { background: rgba(10, 10, 10, 0.95); border: 2px solid var(--cyan); padding: 15px; border-radius: 12px; text-align: center; position: relative; transition: 0.5s; overflow: hidden; }
-        .avatar-card:hover { transform: scale(1.05); box-shadow: 0 0 40px var(--cyan); }
-        .avatar-card img { width: 100%; height: 380px; object-fit: cover; border-radius: 8px; border: 1px solid #333; }
-        .scanner-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); animation: scan 3s infinite; }
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
-        .name-tag { color: var(--gold); margin-top: 15px; font-weight: bold; letter-spacing: 3px; font-size: 1.1rem; }
+        /* Section Styling */
+        .section-title { font-size: 2rem; margin-bottom: 40px; display: flex; align-items: center; gap: 15px; }
+        .section-title::after { content: ""; height: 1px; flex: 1; background: #333; }
 
-        /* Dashboard & Info Panels */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 40px; }
-        .panel { background: rgba(10, 10, 10, 0.98); border: 1px solid #333; border-top: 4px solid var(--cyan); padding: 25px; border-radius: 5px; }
-        .panel h2 { font-size: 0.9rem; color: var(--gold); margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid #222; padding-bottom: 10px; }
-        .full-panel { grid-column: 1 / -1; height: 600px; }
+        /* About & Skills */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skill-tag { 
+            background: var(--card-bg); padding: 8px 20px; border-radius: 50px; 
+            font-size: 0.85rem; border: 1px solid #333; color: var(--text-dim);
+        }
 
-        /* Technical Intel Box (Python & Kali) */
-        .tech-intel { background: #0a0a0a; border-left: 4px solid var(--green); padding: 20px; font-size: 0.85rem; line-height: 1.6; color: #ccc; }
-        .tech-intel b { color: var(--green); }
+        /* Market / Projects Card */
+        .market-card { 
+            background: var(--card-bg); border-radius: 12px; padding: 25px; 
+            border: 1px solid #222; margin-top: 30px; height: 500px;
+        }
 
-        /* Identity Console Box */
-        .console-box { background: #000; border: 2px solid var(--cyan); padding: 40px; margin-top: 50px; position: relative; box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.1); }
-        .info-row { display: flex; margin-bottom: 12px; border-bottom: 1px solid #111; padding-bottom: 8px; }
-        .label { color: var(--gold); width: 220px; font-weight: bold; font-size: 0.9rem; }
-        .value { color: #fff; font-size: 0.9rem; }
+        /* Contact Box */
+        .contact-box {
+            background: linear-gradient(135deg, #112240, #0a0b10);
+            padding: 50px; border-radius: 20px; text-align: center; border: 1px solid var(--accent-color);
+        }
+        .contact-box h3 { margin-bottom: 20px; }
+        .btn-main {
+            display: inline-block; padding: 12px 35px; background: var(--accent-color);
+            color: white; text-decoration: none; border-radius: 5px; font-weight: 600; transition: 0.3s;
+        }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 122, 255, 0.3); }
 
-        footer { text-align: center; padding: 60px; color: #444; font-size: 0.7rem; letter-spacing: 4px; border-top: 1px solid #111; }
+        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; border-top: 1px solid #111; }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            nav .nav-links { display: none; }
+        }
     </style>
 </head>
 <body>
 
-    <canvas id="matrix"></canvas>
+    <nav>
+        <div class="logo">UJJAHAR.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#market">Market Intelligence</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <div class="container">
-        <header>
-            <div class="sec-status">Harsh Yadav Ujjahar</div>
-            <h1 class="glitch-brand">UJJAHAR</h1>
-            <p class="sub-name">Ujjwal Yadav</p>
-            <div class="visitor-counter">📡 ACCESS_LOGS: <span id="count">14,178</span> SESSIONS</div>
-        </header>
+        <section id="home">
+            <div class="hero-content">
+                <img src="IMG_20260113_212445.jpg" class="hero-avatar" alt="Harsh Yadav">
+                <h1>Harsh Yadav</h1>
+                <p>Digital Architect & Analyst</p>
+            </div>
+        </section>
 
-        <div class="avatar-section">
-            <div class="avatar-card">
-                <div class="scanner-line"></div>
-                <img src="IMG_20251026_233243.jpg" alt="Harsh 1">
-                <div class="name-tag">Harsh yadav</div>
-            </div>
-            <div class="avatar-card">
-                <div class="scanner-line"></div>
-                <img src="IMG_20251227_144821.jpg" alt="Harsh 2">
-                <div class="name-tag">Harsh yadav</div>
-            </div>
-            <div class="avatar-card">
-                <div class="scanner-line"></div>
-                <img src="IMG_20260113_212445.jpg" alt="Harsh 3">
-                <div class="name-tag">Harsh yadav</div>
-            </div>
-        </div>
-
-        <div class="grid">
-            <div class="panel full-panel">
-                <h2>💹 GLOBAL_MARKET_TERMINAL (STOCKS • METALS • CRYPTO)</h2>
-                <div id="tv_dashboard" style="height: 94%; width: 100%;"></div>
-            </div>
-
-            <div class="panel">
-                <h2>🛡️ TECHNICAL_INTEL_BASE</h2>
-                <div class="tech-intel">
-                    <b>● KALI LINUX:</b> Ye ek Debian-based distribution hai jo penetration testing aur security auditing ke liye bani hai. Isme Metasploit, Nmap aur Wireshark jaise pre-installed hacking tools hote hain jo digital logic aur network architecture ko samajhne mein help karte hain. <br><br>
-                    <b>● PYTHON:</b> Programming ki duniya ki sabse versatile language. Ise VS Code mein develop karke hum market automation bots, scrapers, aur security tools bana sakte hain. Ye data analysis ke liye duniya ki number 1 pasand hai.
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div>
+                    <p style="color: var(--text-dim); font-size: 1.1rem;">
+                        I am Harsh Yadav (Ujjwal), a dedicated strategist at the intersection of Financial Markets and Technical Engineering. 
+                        My focus is on creating logical, data-driven systems that bring clarity to complex digital environments.
+                    </p>
+                </div>
+                <div class="skills-container" id="skills">
+                    <span class="skill-tag">Python (VS Code)</span>
+                    <span class="skill-tag">Kali Linux</span>
+                    <span class="skill-tag">Stock Market Strategy</span>
+                    <span class="skill-tag">Cyber Security</span>
+                    <span class="skill-tag">Global Market Analysis</span>
+                    <span class="skill-tag">Financial Logic</span>
                 </div>
             </div>
+        </section>
 
-            <div class="panel" style="border-top-color: var(--gold);">
-                <h2>📖 UJJAHAR_CORE_MEANING</h2>
-                <p style="font-size: 0.9rem; color: #ccc; font-style: italic; line-height: 1.8;">
-                    "Ujjahar" ka matlab hai **'Prakash'** ya **'Ujala'**. <br>
-                    Ye brand represent karta hai market logic ki us roshni ko jo digital darkness aur trading ki complexity ko khatam karke ek saaf rasta (Clear Vision) dikhati hai. 
-                </p>
+        <section id="market">
+            <h2 class="section-title">Market Intelligence</h2>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Real-time analysis of Global Equity and Commodity markets.</p>
+            <div class="market-card">
+                <div id="tradingview_widget" style="height: 100%; width: 100%;"></div>
             </div>
-        </div>
+        </section>
 
-        <div class="console-box">
-            <div class="info-row"><span class="label">LEGAL_IDENTITY:</span><span class="value">Harsh yadav ( Ujjwal yadav )</span></div>
-            <div class="info-row"><span class="label">WEB_SIGNATURE:</span><span class="value">Ujjahar Official</span></div>
-            <div class="info-row"><span class="label">CURRENT_LEVEL:</span><span class="value">Class 12 Commerce [Launching Soon]</span></div>
-            <div class="info-row"><span class="label">SECURITY_OS:</span><span class="value">Kali Linux Enthusiast</span></div>
-            <div class="info-row"><span class="label">DEV_ENVIRONMENT:</span><span class="value">Python (Developed via VS Code)</span></div>
-            <div class="info-row"><span class="label">SECURE_COMMS:</span><span class="value">hy1417078@Gmail.com</span></div>
-        </div>
+        <section id="contact">
+            <div class="contact-box">
+                <h3>Let's Build Something Strategic</h3>
+                <p style="color: var(--text-dim); margin-bottom: 30px;">Open for collaborations in Tech and Market Research.</p>
+                <a href="mailto:hy1417078@Gmail.com" class="btn-main">Get In Touch</a>
+                <div style="margin-top: 20px;">
+                    <a href="https://github.com/Ujjahar-Dev" style="color: var(--accent-color); text-decoration: none; margin: 0 10px;">GitHub</a>
+                    <a href="https://instagram.com/trademaster_india_141787" style="color: var(--accent-color); text-decoration: none; margin: 0 10px;">Instagram</a>
+                </div>
+            </div>
+        </section>
 
         <footer>
-            DESIGNED & ENCRYPTED BY UJJAHAR_CORP © 2026<br>
-            [ STATUS: ACTIVE | LOCATION: ENCRYPTED ]
+            © 2026 Harsh Yadav (Ujjwal). Built for Logic & Performance.
         </footer>
     </div>
 
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <script>
+    <script type="text/javascript">
         new TradingView.widget({
             "autosize": true, "symbol": "NASDAQ:AAPL", "interval": "D", "timezone": "Etc/UTC",
-            "theme": "dark", "style": "1", "locale": "en", "container_id": "tv_dashboard",
-            "hide_side_toolbar": false, "allow_symbol_change": true, "details": true, "hotlist": true, "calendar": true,
-            "watchlist": ["TVC:GOLD", "TVC:SILVER", "BINANCE:BTCUSDT", "NASDAQ:TSLA", "NSE:NIFTY"]
+            "theme": "dark", "style": "1", "locale": "en", "container_id": "tradingview_widget",
+            "hide_side_toolbar": false, "allow_symbol_change": true, "details": true, "hotlist": true
         });
-
-        const c = document.getElementById("matrix"); const ctx = c.getContext("2d");
-        c.height = window.innerHeight; c.width = window.innerWidth;
-        const alphabet = "UJJAHAR01STOCKSXAUUSDSECURITYKALI";
-        const drops = Array(Math.floor(c.width/16)).fill(1);
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, c.width, c.height);
-            ctx.fillStyle = "#00f2ff"; ctx.font = "16px monospace";
-            drops.forEach((y, i) => {
-                const char = alphabet[Math.floor(Math.random()*alphabet.length)];
-                ctx.fillText(char, i*16, y*16);
-                if (y*16 > c.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            });
-        }
-        setInterval(drawMatrix, 35);
-
-        // Simple Visitor Counter Animation
-        let count = 14178;
-        setInterval(() => {
-            count += Math.floor(Math.random() * 2);
-            document.getElementById('count').innerText = count.toLocaleString();
-        }, 3000);
     </script>
 </body>
 </html>
