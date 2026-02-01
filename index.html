@@ -3,199 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Yadav | Digital Architect & System Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <title>Harsh Yadav | Digital Architect Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #ffffff;
-            --bg-dark: #000000;
-            --accent: #007aff; /* Premium Blue */
-            --text-dark: #000000;
-            --text-light: #ffffff;
-            --gray: #f5f5f7;
+            --bg: #000000;
+            --text: #ffffff;
+            --accent: #00f2ff;
+            --green: #39ff14;
+            --card-bg: #0a0a0a;
+            --border: #1a1a1a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-main); color: var(--text-dark); font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
 
-        /* Navigation */
-        nav { 
-            position: fixed; top: 0; width: 100%; padding: 20px 8%; 
-            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #eaeaea;
+        /* 🟢 Status Bar with Green Light */
+        .status-bar { 
+            background: #050505; padding: 10px 5%; font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem; border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 1000;
         }
-        .nav-logo { font-weight: 800; color: var(--text-dark); letter-spacing: 2px; font-size: 1.1rem; }
-        .nav-links a { color: #666; text-decoration: none; margin-left: 30px; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
+        .green-light { width: 10px; height: 10px; background: var(--green); border-radius: 50%; box-shadow: 0 0 10px var(--green); animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        /* Hero - White Clean Look (Photo 3 as Brand Face) */
-        .hero { padding: 160px 0 100px; text-align: center; background: #fff; }
-        .hero-img { 
-            width: 220px; height: 220px; border-radius: 50%; border: 1px solid #eee;
-            margin-bottom: 25px; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        /* 👤 Hero Section (Photo 1) */
+        .hero { padding: 100px 0 60px; text-align: center; }
+        .hero-img { width: 200px; height: 200px; border-radius: 50%; border: 2px solid var(--accent); margin-bottom: 25px; object-fit: cover; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 5px; }
+        .hero .sub-text { font-size: 1.2rem; color: #888; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* 📖 Narrative Section */
+        section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+        h2 { font-size: 1.5rem; margin-bottom: 30px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; }
+        .narrative-box p { font-size: 1.05rem; color: #ccc; margin-bottom: 20px; }
+
+        /* 💻 Laptop Frame Styling */
+        .laptop-container { margin-bottom: 50px; }
+        .laptop-frame { 
+            background: #1a1a1a; border-radius: 12px 12px 0 0; padding: 10px 15px; 
+            display: flex; gap: 8px; border: 1px solid #333; border-bottom: none;
         }
-        .hero h1 { font-size: clamp(3rem, 10vw, 5rem); font-weight: 800; letter-spacing: -3px; line-height: 1; margin-bottom: 10px; }
-        .hero .tagline { color: var(--accent); font-weight: 700; letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem; }
-        .hero .sub-title { color: #888; margin-top: 10px; font-size: 1.1rem; }
-
-        /* Section Global Icons & Headers */
-        section { padding: 100px 0; border-bottom: 1px solid #f0f0f0; }
-        .sec-header { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
-        .sec-header span { font-size: 1.5rem; }
-        .sec-header h2 { font-size: 1.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* Narrative & Technical Intel */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-        .narrative-p { font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 25px; }
-        .highlight { color: var(--text-dark); font-weight: 700; border-bottom: 2px solid var(--accent); }
-
-        /* Kali Linux & Python Detail Cards */
-        .tech-card { background: var(--gray); padding: 30px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #eee; }
-        .tech-card h4 { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: var(--accent); }
-        .tech-card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
-
-        /* VS Code Style Logic Terminal */
-        .terminal-box { background: #1e1e1e; border-radius: 12px; overflow: hidden; font-family: 'JetBrains Mono', monospace; box-shadow: 0 30px 60px rgba(0,0,0,0.2); }
-        .term-header { background: #333; padding: 12px 20px; display: flex; gap: 8px; align-items: center; }
-        .term-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .term-body { padding: 30px; color: #d4d4d4; font-size: 0.95rem; line-height: 1.5; min-height: 350px; }
-
-        /* Professional Gallery (Photo 1 & 2) */
-        .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .gallery-item { width: 100%; height: 500px; object-fit: cover; border-radius: 20px; border: 1px solid #eee; transition: 0.5s; }
-        .gallery-item:hover { transform: scale(1.02); box-shadow: 0 30px 50px rgba(0,0,0,0.1); }
-
-        /* Ecosystem - Clean Cards with Icons */
-        .eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .eco-card { 
-            padding: 35px; background: #fff; border: 1px solid #eee; border-radius: 12px; 
-            text-decoration: none; color: inherit; transition: 0.3s;
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .screen { 
+            background: #050505; border: 1px solid #333; padding: 25px; 
+            font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; min-height: 250px; 
+            border-radius: 0 0 12px 12px; margin-bottom: 20px; color: #00f2ff;
         }
-        .eco-card:hover { border-color: var(--accent); background: var(--gray); }
-        .eco-card .icon-head { font-size: 1.5rem; margin-bottom: 15px; display: block; }
-        .eco-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
-        .eco-card p { color: #666; font-size: 0.85rem; }
+        .tech-desc { padding: 0 10px; color: #999; font-size: 0.95rem; }
 
-        footer { background: var(--bg-dark); color: var(--text-light); padding: 80px 0; text-align: center; }
-        .f-logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 5px; margin-bottom: 20px; display: block; }
+        /* 🌐 Ecosystem Grid (All Links Separated) */
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 30px; }
+        .link-card { 
+            background: var(--card-bg); border: 1px solid var(--border); padding: 25px; 
+            border-radius: 8px; text-decoration: none; color: white; transition: 0.3s;
+        }
+        .link-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .link-card h3 { font-size: 1rem; margin-bottom: 8px; color: var(--accent); }
+        .link-card p { font-size: 0.85rem; color: #666; }
 
-        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: 1fr; } }
+        /* 🖼️ Gallery */
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .gallery-img { width: 100%; height: 350px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
+
+        footer { text-align: center; padding: 80px 0; color: #444; font-size: 0.8rem; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-logo">UJJAHAR</div>
-        <div class="nav-links">
-            <a href="#about">Story</a>
-            <a href="#intel">Technical Intel</a>
-            <a href="#logic">Logic</a>
-            <a href="#eco">Ecosystem</a>
-        </div>
-    </nav>
+    <div class="status-bar">
+        <div class="green-light"></div>
+        <span>LOCATION: DELHI, INDIA | STATUS: ACTIVE | ARCHITECT: HARSH YADAV</span>
+    </div>
 
     <div class="container">
         <header class="hero">
-            <img src="IMG_20260113_212445.jpg" class="hero-img" alt="Founder">
-            <div class="tagline">Digital Architect</div>
-            <h1>UJJAHAR</h1> <div class="sub-title">Ujjwal Yadav</div>
+            <img src="IMG_20251026_233243.jpg" class="hero-img" alt="Harsh Yadav">
+            <h1>Harsh Yadav</h1> <div class="sub-text">Ujjwal Yadav | Digital Architect</div>
         </header>
 
-        <section id="about">
-            <div class="sec-header"><span>📖</span><h2>Core Narrative</h2></div>
-            <div class="grid-2">
-                <div>
-                    <p class="narrative-p">My technical journey began in <span class="highlight">Class 5</span>. What started as a simple YouTube channel curiosity has evolved into an engineering mindset. Today, I work with over <span class="highlight">60+ AI tools</span>, integrating them into complex logical workflows.</p>
-                    <p class="narrative-p">I am currently a <span class="highlight">Class 12 Commerce</span> student, proving that a background in logic and strategy is the strongest foundation for high-level technical architecture.</p>
-                </div>
-                <div>
-                    <p class="narrative-p" style="color: var(--accent); font-weight: 800;">MISSION: THE HUMAN SENSE AI</p>
-                    <p class="narrative-p">My ultimate ambition is to architect a <span class="highlight">Human Sense AI</span>—a bridge between binary logic and human intuition. Every project here is a stepping stone toward that vision.</p>
-                </div>
+        <section id="narrative">
+            <h2>The Journey</h2>
+            <div class="narrative-box">
+                <p>Started in <strong>Class 5</strong> with a YouTube vision. Evolved into a Digital Architect with <strong>60+ AI tools</strong> integrated into my logic.</p>
+                <p>Currently <strong>Class 12 Commerce</strong> student, bridging the gap between business strategy and deep technical engineering. Mission: <strong>Human Sense AI</strong>.</p>
             </div>
         </section>
 
-        <section id="intel">
-            <div class="sec-header"><span>🛠️</span><h2>Technical Intel</h2></div>
-            <div class="grid-2">
-                <div class="tech-card">
-                    <h4><span>🛡️</span> KALI LINUX</h4>
-                    <p>I utilize Kali Linux as my primary environment for system fortification and offensive security testing. Mastering Metasploit, Nmap, and network architecture allows me to understand vulnerabilities before they are exploited.</p>
+        <section id="tech">
+            <h2>Technical Mainframes</h2>
+
+            <div class="laptop-container">
+                <div class="laptop-frame">
+                    <div class="dot" style="background: #ff5f56;"></div>
+                    <div class="dot" style="background: #ffbd2e;"></div>
+                    <div class="dot" style="background: #27c93f;"></div>
+                    <span style="color: #555; font-size: 0.7rem; margin-left: 10px;">kali_linux_terminal.sh</span>
                 </div>
-                <div class="tech-card">
-                    <h4><span>🐍</span> PYTHON ARCHITECTURE</h4>
-                    <p>Python is the backbone of my automation. I develop custom scripts in VS Code to handle data extraction, algorithmic analysis, and AI tool integration with clean, efficient logic.</p>
+                <div class="screen">
+                    root@ujjahar:~# apt-get install security-intel<br>
+                    Reading package lists... Done<br>
+                    Building dependency tree... Done<br>
+                    [SYSTEM FORTIFIED]
+                </div>
+                <div class="tech-desc">
+                    <strong>Kali Linux:</strong> My primary environment for offensive security and system fortification. Used for network analysis and vulnerability research.
                 </div>
             </div>
-        </section>
 
-        <section id="logic">
-            <div class="sec-header"><span>💻</span><h2>System Logic</h2></div>
-            <div class="terminal-box">
-                <div class="term-header">
-                    <div class="term-dot" style="background: #ff5f56;"></div>
-                    <div class="term-dot" style="background: #ffbd2e;"></div>
-                    <div class="term-dot" style="background: #27c93f;"></div>
-                    <span style="color: #888; margin-left: 10px; font-size: 0.75rem;">ujjahar_core.py — VS Code</span>
+            <div class="laptop-container">
+                <div class="laptop-frame">
+                    <div class="dot" style="background: #ff5f56;"></div>
+                    <div class="dot" style="background: #ffbd2e;"></div>
+                    <div class="dot" style="background: #27c93f;"></div>
+                    <span style="color: #555; font-size: 0.7rem; margin-left: 10px;">automation_logic.py</span>
                 </div>
-                <div class="term-body" id="typewriter"></div>
+                <div class="screen" style="color: #39ff14;">
+                    def architect_vision():<br>
+                    &nbsp;&nbsp;core = "Python"<br>
+                    &nbsp;&nbsp;mission = "Logic Extraction"<br>
+                    &nbsp;&nbsp;print(f"Status: {mission} Active")<br><br>
+                    architect_vision()
+                </div>
+                <div class="tech-desc">
+                    <strong>Python:</strong> The language of my automation. I develop custom tools for data extraction and AI integration in VS Code.
+                </div>
+            </div>
+
+            <div class="laptop-container">
+                <div class="laptop-frame">
+                    <div class="dot" style="background: #ff5f56;"></div>
+                    <div class="dot" style="background: #ffbd2e;"></div>
+                    <div class="dot" style="background: #27c93f;"></div>
+                    <span style="color: #555; font-size: 0.7rem; margin-left: 10px;">index.html</span>
+                </div>
+                <div class="screen" style="color: #ffffff;">
+                    &lt;div class="ujjahar-brand"&gt;<br>
+                    &nbsp;&nbsp;&lt;h1&gt;Digital Architect&lt;/h1&gt;<br>
+                    &nbsp;&nbsp;&lt;p&gt;Built by Harsh Yadav&lt;/p&gt;<br>
+                    &lt;/div&gt;
+                </div>
+                <div class="tech-desc">
+                    <strong>HTML/CSS:</strong> Designing the interface of the digital ecosystem. Every pixel is engineered for clarity and professional representation.
+                </div>
             </div>
         </section>
 
         <section>
-            <div class="sec-header"><span>🖼️</span><h2>Professional Gallery</h2></div>
-            <div class="gallery-grid">
-                <img src="IMG_20251026_233243.jpg" class="gallery-item" alt="Gallery 1">
-                <img src="IMG_20251227_144821.jpg" class="gallery-item" alt="Gallery 2">
+            <h2>Visual Gallery</h2>
+            <div class="gallery">
+                <img src="IMG_20251227_144821.jpg" class="gallery-img" alt="Gallery 1">
+                <img src="IMG_20260113_212445.jpg" class="gallery-img" alt="Gallery 2">
             </div>
         </section>
 
-        <section id="eco">
-            <div class="sec-header"><span>🌐</span><h2>Digital Ecosystem</h2></div>
-            <div class="eco-grid">
-                <a href="https://github.com/Ujjahar-Dev" class="eco-card" style="border-width: 2px; border-color: var(--accent);">
-                    <span class="icon-head">📂</span>
+        <section id="ecosystem">
+            <h2>Digital Ecosystem</h2>
+            <div class="links-grid">
+                <a href="https://www.instagram.com/h.g.yadav8" class="link-card">
+                    <h3>Instagram / Official</h3>
+                    <p>Primary professional identity and portfolio updates.</p>
+                </a>
+                <a href="https://www.instagram.com/h.g_yadav" class="link-card">
+                    <h3>Instagram / Special</h3>
+                    <p>Exclusive technical insights and deep-logic strategy.</p>
+                </a>
+                <a href="https://www.instagram.com/h.g_yadav87" class="link-card" style="border-color: var(--accent);">
+                    <h3>Instagram / Connect</h3>
+                    <p>Visitor Hub. Follow here for the latest architectural logs.</p>
+                </a>
+                <a href="https://github.com/Ujjahar-Dev" class="link-card" style="background: #111;">
                     <h3>GitHub / Ujjahar-Dev</h3>
-                    <p>Active Development Mainframe. High-level Python and Security repositories.</p>
+                    <p>Active development mainframe and advanced codebases.</p>
                 </a>
-                <a href="https://www.instagram.com/h.g_yadav87" class="eco-card">
-                    <span class="icon-head">💬</span>
-                    <h3>Instagram Hub</h3>
-                    <p>Community connection and visitor hub. Follow for architectural insights.</p>
+                <a href="https://github.com/Ujjwalyadav-87" class="link-card">
+                    <h3>GitHub / Legacy</h3>
+                    <p>Archived foundational projects and previous contributions.</p>
                 </a>
-                <a href="https://medium.com/@ujjwalyadav141738" class="eco-card">
-                    <span class="icon-head">🖋️</span>
-                    <h3>Medium / Shayari</h3>
-                    <p>Philosophical arts and creative expressions beyond code.</p>
+                <a href="https://ujjwalyadav87.blogspot.com/" class="link-card">
+                    <h3>Blogger</h3>
+                    <p>Deep-dive technical articles and system logs.</p>
                 </a>
-                <a href="https://github.com/Ujjwalyadav-87" class="eco-card">
-                    <span class="icon-head">📜</span>
-                    <h3>Legacy Archives</h3>
-                    <p>Foundational codes and previous technical contributions.</p>
+                <a href="https://medium.com/@ujjwalyadav141738" class="link-card">
+                    <h3>Medium / Poetry</h3>
+                    <p>Philosophical arts and creative expressions.</p>
+                </a>
+                <a href="https://substack.com/@ujjwalyadav" class="link-card">
+                    <h3>Substack</h3>
+                    <p>Strategic newsletters and technical thoughts.</p>
                 </a>
             </div>
         </section>
+
+        <footer>
+            UJJAHAR CORP © 2026 | DESIGNED BY HARSH YADAV | CO-ENGINEERED BY GEMINI AI
+        </footer>
     </div>
-
-    <footer>
-        <span class="f-logo">UJJAHAR</span>
-        <p>© 2026 Harsh Yadav (Ujjwal) | Engineered with Logic & AI</p>
-    </footer>
-
-    <script>
-        const codeText = `class UjjaharArchitect:\n    def __init__(self):\n        self.env = "Kali Linux"\n        self.core = "Python"\n        self.vision = "Human Sense AI"\n\n    def execute_logic(self):\n        print("Initializing System Fortification...")\n        print("Analyzing Data Streams...")\n        print("Mission: Enlightenment through Logic.")\n\n# Execution Passage\nArchitect = UjjaharArchitect()\nArchitect.execute_logic()`;
-        let i = 0;
-        function type() {
-            if (i < codeText.length) {
-                document.getElementById("typewriter").innerHTML += codeText.charAt(i).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
-                i++;
-                setTimeout(type, 25);
-            }
-        }
-        window.onload = type;
-    </script>
 </body>
 </html>
